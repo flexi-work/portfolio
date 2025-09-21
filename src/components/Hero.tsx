@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
         <div className="mb-8">
           <div className="inline-flex items-center gap-2 bg-pink-500/10 border border-pink-500/20 rounded-full px-4 py-2 text-pink-400 font-medium mb-8">
             <Zap size={16} />
-            Full-stack Innovation Hub
+            The Leading-Innovation Hub
           </div>
         </div>
 
@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
           <p className="mb-4">Where innovation meets expertise</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-lg">
             <div className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-pink-500/20">
-              <span className="text-pink-500 font-bold">F</span>ull-stack
+              <span className="text-pink-500 font-bold">F</span>ast
             </div>
             <div className="bg-black/30 backdrop-blur-sm rounded-lg p-4 border border-pink-500/20">
               <span className="text-pink-500 font-bold">L</span>oyal

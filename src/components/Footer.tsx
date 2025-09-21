@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart ,Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#services', label: 'Services' },
-    { href: '#projects', label: 'Projects' },
+    // { href: '#projects', label: 'Projects' },
   ];
 
   const services = [
@@ -30,23 +30,23 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-              Full-stack, Loyal, Expert, Innovation - We transform your digital vision into reality with cutting-edge solutions and unmatched dedication.
+              Fast, Loyal, Expert, Innovation - We transform your digital vision into reality with cutting-edge solutions and unmatched dedication.
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.instagram.com/flexi_work786"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-pink-500 hover:text-white transition-all duration-300"
               >
-                <Github size={20} />
+                <Instagram size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/flexi-work-89875a384/"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-pink-500 hover:text-white transition-all duration-300"
               >
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:hello@flexi.com"
+                href="https://mailto:flexi.work786@gmail.com"
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-pink-500 hover:text-white transition-all duration-300"
               >
                 <Mail size={20} />

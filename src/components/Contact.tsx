@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from "@emailjs/browser";
 import { Send, Mail, Phone, MapPin } from 'lucide-react';
 
 const Contact: React.FC = () => {
@@ -10,19 +11,41 @@ const Contact: React.FC = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e:React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', service: '', message: '' });
+
+    emailjs
+      .send(
+        "service_lcl7rl8",    // EmailJS service ID
+        "template_vm71neo",   // EmailJS template ID
+        formData,             // Data to send
+        "oCAk1uxdJl8TldIsp"     // EmailJS public key
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Thank you for your message! We'll get back to you soon.");
+          setFormData({
+            name: "",
+            email: "",
+            service: "",
+            message: "",
+          });
+        },
+        (err) => {
+          console.error("FAILED...", err);
+          alert("Failed to send the message. Try again later.");
+        }
+      );
   };
+
+  
 
   const services = [
     'Graphic Design',
@@ -105,7 +128,7 @@ const Contact: React.FC = () => {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Project Details
+                  Any Message For Us ?
                 </label>
                 <textarea
                   id="message"
@@ -115,7 +138,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-colors duration-200 resize-none"
-                  placeholder="Tell us about your project requirements..."
+                  placeholder="Can You us about your project requirements..."
                 />
               </div>
 
@@ -145,12 +168,12 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email Us</h4>
-                  <p className="text-gray-300">hello@flexi.com</p>
+                  <p className="text-gray-300">flex.work786@gmail.com</p>
                   <p className="text-gray-400 text-sm">We'll respond within 24 hours</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              {/* <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Phone size={20} className="text-white" />
                 </div>
@@ -159,7 +182,7 @@ const Contact: React.FC = () => {
                   <p className="text-gray-300">+1 (555) 123-4567</p>
                   <p className="text-gray-400 text-sm">Mon-Fri, 9AM-6PM EST</p>
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
