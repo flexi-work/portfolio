@@ -157,6 +157,17 @@ const Services: React.FC = () => {
     setTimeout(() => setSelectedService(null), 300);
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    closeModal(); // Close the modal after clicking Get Started
+  };
+
   // GSAP animations for modal
   useEffect(() => {
     if (isModalOpen && modalRef.current && overlayRef.current) {
@@ -360,7 +371,10 @@ const Services: React.FC = () => {
 
                   {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-700">
-                    <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-xl transition-colors duration-200 flex-1">
+                    <button 
+                      onClick={scrollToContact}
+                      className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-xl transition-colors duration-200 flex-1"
+                    >
                       Get Started
                     </button>
                     <button 
