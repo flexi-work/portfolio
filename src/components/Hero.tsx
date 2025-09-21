@@ -55,12 +55,12 @@ const Hero: React.FC = () => {
             Explore Services
             <ArrowRight size={20} />
           </a>
-          <a
+          {/* <a
             href="#projects"
             className="inline-flex items-center gap-2 bg-transparent border-2 border-pink-500 text-pink-500 px-8 py-4 rounded-full font-semibold hover:bg-pink-500 hover:text-white transition-all duration-300"
           >
             View Projects
-          </a>
+          </a> */}
         </div>
       </div>
     </section>
