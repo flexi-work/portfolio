@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X , Sparkles } from 'lucide-react';
 import { gsap } from 'gsap';
+import Logo from '../assets/Flexi.png';
 
 // Add custom styles for the smooth animated navigation
 const styles = `
@@ -35,6 +36,16 @@ const styles = `
   body {
     font-family: 'Inter', sans-serif;
   }
+
+  /* Custom scrollbar hiding utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 `;
 
 // Inject styles into the document head
@@ -54,7 +65,7 @@ const Header: React.FC = () => {
     { href: '#about', label: 'About' },
     { href: '#services', label: 'Services' },
     { href: '#tech-stack', label: 'Tech Stack' },
-    // { href: '#projects', label: 'Projects' },
+    { href: '#projects', label: 'Projects' },
     { href: '#contact', label: 'Contact' },
   ];
 
@@ -76,7 +87,7 @@ const Header: React.FC = () => {
       );
 
       // Stagger animation for navigation links
-      gsap.fromTo(navLinksRef.current,
+      gsap.fromTo(navLinksRef.current.filter(el => el), // Filter out nulls
         {
           opacity: 0,
           y: -20
@@ -85,7 +96,7 @@ const Header: React.FC = () => {
           opacity: 1,
           y: 0,
           duration: 0.8,
-          stagger: 0.3,
+          stagger: 0.2,
           delay: 0.3,
           ease: "power2.out"
         }
@@ -144,13 +155,32 @@ const Header: React.FC = () => {
 
   return (
     <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-pink-500/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <span className="text-2xl font-bold text-white">
-              Flexi<span className="text-pink-500">.</span>
-            </span>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div className="flex justify-between items-center h-20">
+  
+                      <div className="flex-shrink-0">
+                        <a href="#home" className="flex items-center gap-3">
+                         {Logo ? (
+                            <div className="relative">
+                            <img
+                               src={Logo}
+                               alt="Flexi Logo"
+                               className="h-16 w-auto [filter:drop-shadow(0_0_8px_#ec4899)]"
+                             />
+                           
+                            </div>
+                          ) : null}
+            
+                          <div>
+                            <div className="text-2xl font-extrabold text-white tracking-wide select-none">
+                              Flexi <Sparkles className="inline-block  text-pink-500" size={15} />
+                            </div>
+                            <div className="text-xs uppercase text-pink-300 tracking-wider -mt-1 ml-1">
+                              - The era. Spared by U
+                           </div>
+                        </div>
+                      </a>
+                       </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">

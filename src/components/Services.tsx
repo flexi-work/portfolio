@@ -264,7 +264,7 @@ const Services: React.FC = () => {
         >
           <div 
             ref={modalRef}
-            className="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700"
+            className="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700 no-scrollbar"
             onClick={(e) => e.stopPropagation()}
           >
             {selectedService !== null && (
